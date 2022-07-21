@@ -7,7 +7,6 @@ data class PostModel(
     var thumbnailUrl: String?,
     var publication_date: String,
     var fullFileUrl: String?,
-    var title : String,
-    var isVideo : Boolean
-
+    var title: String,
+    var isVideo: Boolean
 )

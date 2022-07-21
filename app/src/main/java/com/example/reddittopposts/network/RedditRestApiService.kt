@@ -9,8 +9,8 @@ import retrofit2.http.Query
 interface RedditRestApiService {
 
     @Headers("Content-Type: application/json")
-    @GET("top.json")
+    @GET("top.json?")
     suspend fun getRedditTop(
-        @Query("after") next_page_key : String,
-    ) : Response<RedditData>
+        @Query("after") next_page_key: String,
+    ): Response<RedditData>
 }

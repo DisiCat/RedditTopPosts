@@ -1,8 +1,5 @@
 package com.example.reddittopposts.adapters
 
-import android.content.res.Resources
-import android.provider.Settings.Global.getString
-import android.provider.Settings.System.getString
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -33,12 +30,12 @@ class TopPostsActivityAdapter(
             } else {
                 binding.contentPreviewImage.visibility = View.GONE
             }
+
             if (postModel.isVideo) {
                 binding.downloadImageTextView.setText(R.string.download_video)
             } else {
                 binding.downloadImageTextView.setText(R.string.download_image)
             }
-
 
             binding.contentPreviewImage.setOnClickListener {
                 thumbnailClickListener(postModel.fullFileUrl)

@@ -9,9 +9,6 @@ import com.example.reddittopposts.repositories.ITopPostsRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import java.text.ParseException
-import java.time.OffsetDateTime
-import java.time.ZoneOffset
-import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 class TopPostsUseCase @Inject constructor(
@@ -19,10 +16,8 @@ class TopPostsUseCase @Inject constructor(
 ) : ITopPostsUseCase {
 
     override fun getRedditData(): Flow<PagingData<PostModel>> {
-
-        val pager = topPostsRepository.getPagedPosts()
+        return topPostsRepository.getPagedPosts()
             .map { pagingData -> pagingData.map { createPostModel(it.data) } }
-        return pager
     }
 
     private fun createPostModel(childData: ChildData): PostModel {
@@ -32,20 +27,24 @@ class TopPostsUseCase @Inject constructor(
             count_comments = childData.numComments.toString() ?: "---",
             thumbnailUrl = childData.thumbnail,
             publication_date = getDateTimeFormatted(childData.createdUTC?.toLong()),
-            fullFileUrl = if(childData.isVideo == true ) { childData.media?.reddit_video?.scrubberMediaURL} else {childData.url},
-            title = childData.title?: "---",
-            isVideo = childData.isVideo?: false
+            fullFileUrl = if (childData.isVideo == true) {
+                childData.media?.reddit_video?.scrubberMediaURL
+            } else {
+                childData.url
+            },
+            title = childData.title ?: "---",
+            isVideo = childData.isVideo ?: false
         )
     }
 
-    private fun getDateTimeFormatted(time: Long?): String {
+    private fun getDateTimeFormatted(publication_time: Long?): String {
         var timeResult = ""
-        if (time != null) {
+        if (publication_time != null) {
             try {
                 val now = System.currentTimeMillis()
                 timeResult =
                     DateUtils.getRelativeTimeSpanString(
-                        time * 1000,
+                        publication_time * 1000,
                         now,
                         DateUtils.MINUTE_IN_MILLIS,
                         FORMAT_ABBREV_RELATIVE

@@ -28,12 +28,12 @@ ext {
     core_version = '1.8.0'
     constraint_layout_version = '2.1.4'
     material_version = '1.6.1'
-    lifecycle_version = '2.4.1'
+    lifecycle_version = '2.6.0-alpha01'
     support_lib_version = '1.4.2'
-    coroutines = '1.6.0'
+    coroutines = '1.6.1'
     navigation_version = '2.5.0'
-    pagingVersion = "3.0.0"
-    okhttp_version = '4.9.0'
+    pagingVersion = "3.1.1"
+    okhttp_version = '5.0.0-alpha.2'
     lifecycleVersion = '2.4.0-alpha01'
     picasso_lib_version = '2.71828'
 }

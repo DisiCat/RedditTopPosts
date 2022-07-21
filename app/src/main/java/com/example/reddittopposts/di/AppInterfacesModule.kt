@@ -19,5 +19,5 @@ abstract class AppInterfacesModule {
 
     // region UseCase
     @Binds
-    abstract fun bundTopPostsUseCase(impl: TopPostsUseCase): ITopPostsUseCase
+    abstract fun bindTopPostsUseCase(impl: TopPostsUseCase): ITopPostsUseCase
 }

@@ -2,20 +2,16 @@ package com.example.reddittopposts
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.reddittopposts.entities.PostModel
 import com.example.reddittopposts.entities.parseModels.Children
 import com.example.reddittopposts.network.RedditRestApiService
-import dagger.assisted.Assisted
-import dagger.assisted.AssistedFactory
-import dagger.assisted.AssistedInject
 import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
 
 class RedditPagingSource @Inject constructor(
-    private val requester: RedditDataRequester,
     private val restApiService: RedditRestApiService
 ) : PagingSource<Int, Children>() {
+
     override fun getRefreshKey(state: PagingState<Int, Children>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
             state.closestPageToPosition(anchorPosition)?.prevKey?.plus(1)
@@ -24,14 +20,13 @@ class RedditPagingSource @Inject constructor(
     }
 
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Children> {
-        val pageNumber = params.key ?: TopPostsPagingSource.INITIAL_PAGE_NUMBER
-        val pageSize = params.loadSize.coerceAtMost(TopPostsPagingSource.MAX_PAGE_SIZE)
+        val pageNumber = params.key ?: INITIAL_PAGE_NUMBER
+        val pageSize = params.loadSize.coerceAtMost(MAX_PAGE_SIZE)
 
         return try {
             val responseModel = restApiService.getRedditTop(NEXT_PAGE_KEY)
 
-
-            if (responseModel != null && responseModel.isSuccessful) {
+            if (responseModel.isSuccessful) {
                 NEXT_PAGE_KEY = responseModel.body()?.data?.after ?: ""
                 val posts =
                     responseModel.body()?.data?.children ?: emptyList()

@@ -17,6 +17,7 @@ import androidx.paging.CombinedLoadStates
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.reddittopposts.adapters.LoadStateAdapter
 import com.example.reddittopposts.adapters.TopPostsActivityAdapter
 import com.example.reddittopposts.databinding.ActivityMainBinding
 import com.example.reddittopposts.entities.PostModel
@@ -33,16 +34,15 @@ class TopPostsActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
-
         setContentView(binding.root)
+
         initViewModel()
         initAdapter()
     }
 
-
     private fun initViewModel() {
         lifecycleScope.launchWhenCreated {
-            viewModel.getData().collectLatest {
+            viewModel.topPosts?.collectLatest {
                 adapter?.submitData(it)
             }
         }
@@ -59,6 +59,12 @@ class TopPostsActivity : AppCompatActivity() {
                 DividerItemDecoration.VERTICAL
             )
         )
+
+        binding.recyclerView.adapter = adapter?.withLoadStateHeaderAndFooter(
+            header = LoadStateAdapter { adapter?.retry() },
+            footer = LoadStateAdapter { adapter?.retry() }
+        )
+
         adapter?.addLoadStateListener { state: CombinedLoadStates ->
             binding.recyclerView.isVisible = state.refresh != LoadState.Loading
             binding.loadingLottieView.isVisible = state.refresh == LoadState.Loading
