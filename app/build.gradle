@@ -10,7 +10,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.reddittopposts"
-        minSdk 21
+        minSdk 26
         targetSdk 31
         versionCode 1
         versionName "1.0"
@@ -30,6 +30,10 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+    buildFeatures {
+        dataBinding true
+        viewBinding true
     }
 }
 
@@ -60,9 +64,12 @@ dependencies {
     //ViewPager2
     implementation "androidx.viewpager2:viewpager2:1.0.0"
     //Lifecycle
-    def lifecycleVersion = '2.4.0-alpha01'
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
+    //Paging
+    implementation "androidx.paging:paging-runtime-ktx:$pagingVersion"
+    //Picasso
 
+    implementation "com.squareup.picasso:picasso:$picasso_lib_version"
 }
