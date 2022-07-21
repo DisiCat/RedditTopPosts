@@ -4,9 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/ASUS/Documents/RedditTopPosts/app/src/main/res/drawable/dot.xml" value="0.1825" />
+        <entry key="..\:/Users/ASUS/Documents/RedditTopPosts/app/src/main/res/drawable/ic_custom_launcher_round.xml" value="0.185" />
+        <entry key="..\:/Users/ASUS/Documents/RedditTopPosts/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.185" />
+        <entry key="..\:/Users/ASUS/Documents/RedditTopPosts/app/src/main/res/drawable/ic_reddit.xml" value="0.185" />
+        <entry key="..\:/Users/ASUS/Documents/RedditTopPosts/app/src/main/res/drawable/ic_reddit_logo.xml" value="0.185" />
         <entry key="..\:/Users/ASUS/Documents/RedditTopPosts/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/ASUS/Documents/RedditTopPosts/app/src/main/res/layout/image_dot_layout.xml" value="0.21666666666666667" />
-        <entry key="..\:/Users/ASUS/Documents/RedditTopPosts/app/src/main/res/layout/post_item_rv.xml" value="0.264" />
+        <entry key="..\:/Users/ASUS/Documents/RedditTopPosts/app/src/main/res/layout/post_item_rv.xml" value="0.4" />
+        <entry key="..\:/Users/ASUS/Documents/RedditTopPosts/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.185" />
+        <entry key="..\:/Users/ASUS/Documents/RedditTopPosts/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.185" />
       </map>
     </option>
   </component>

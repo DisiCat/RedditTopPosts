@@ -5,7 +5,10 @@ buildscript {
     ext.hilt_version = '2.41'
 
     dependencies {
+        classpath 'com.android.tools.build:gradle:7.1.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
+        classpath 'com.google.gms:google-services:4.3.10'
     }
 }
 
@@ -29,6 +32,8 @@ ext {
     support_lib_version = '1.4.2'
     coroutines = '1.6.0'
     navigation_version = '2.5.0'
-
+    pagingVersion = "3.0.0"
     okhttp_version = '4.9.0'
+    lifecycleVersion = '2.4.0-alpha01'
+    picasso_lib_version = '2.71828'
 }

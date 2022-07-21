@@ -1,6 +1,6 @@
 package com.example.reddittopposts.di
 
-import com.example.reddittopposts.AppLinks
+import com.example.reddittopposts.constants.LinkData
 import com.example.reddittopposts.network.RedditRestApiService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -19,7 +19,7 @@ object AppNetworkModule {
     @Provides
     @Singleton
     fun provideRetrofit(moshi: Moshi): Retrofit =
-        Retrofit.Builder().baseUrl(AppLinks.API_REDDIT_TOP_URL)
+        Retrofit.Builder().baseUrl(LinkData.API_REDDIT_TOP_URL)
             .addConverterFactory(MoshiConverterFactory.create(moshi)).build()
 
     @Singleton

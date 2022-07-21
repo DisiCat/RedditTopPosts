@@ -1,4 +1,4 @@
-package com.example.reddittopposts.entities
+package com.example.reddittopposts.entities.parseModels
 
 import com.squareup.moshi.Json
 

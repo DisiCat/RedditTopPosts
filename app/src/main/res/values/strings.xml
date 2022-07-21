@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">RedditTopPosts</string>
-    <string name="post">Posts</string>
+    <string name="post">Top posts</string>
     <string name="comments">comments</string>
+    <string name="download_image"><u>Download image</u></string>
+    <string name="download_video"><u>Download video</u></string>
 
 </resources>
