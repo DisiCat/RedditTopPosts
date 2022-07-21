@@ -10,8 +10,11 @@ import android.os.Bundle
 import android.os.Environment
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.CombinedLoadStates
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.reddittopposts.adapters.TopPostsActivityAdapter
@@ -56,6 +59,10 @@ class TopPostsActivity : AppCompatActivity() {
                 DividerItemDecoration.VERTICAL
             )
         )
+        adapter?.addLoadStateListener { state: CombinedLoadStates ->
+            binding.recyclerView.isVisible = state.refresh != LoadState.Loading
+            binding.loadingLottieView.isVisible = state.refresh == LoadState.Loading
+        }
     }
 
     private fun clickCardThumbnail(url: String?) {
@@ -69,6 +76,7 @@ class TopPostsActivity : AppCompatActivity() {
         openURL.data = Uri.parse(url)
         startActivity(openURL)
     }
+
     private fun clickFileDownload(postModel: PostModel) {
         val manager = getSystemService(Context.DOWNLOAD_SERVICE) as DownloadManager
         val uri =
@@ -103,8 +111,9 @@ class TopPostsActivity : AppCompatActivity() {
             ).show()
         }
     }
-        override fun onDestroy() {
-            super.onDestroy()
-            adapter = null
-        }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        adapter = null
     }
+}

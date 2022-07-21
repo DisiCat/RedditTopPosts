@@ -43,7 +43,6 @@ dependencies {
     implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
     implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
     implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
-
     implementation 'com.squareup.okhttp3:logging-interceptor:3.8.0'
     //Hilt
     implementation "com.google.dagger:hilt-android:$hilt_version"
@@ -70,6 +69,8 @@ dependencies {
     //Paging
     implementation "androidx.paging:paging-runtime-ktx:$pagingVersion"
     //Picasso
-
     implementation "com.squareup.picasso:picasso:$picasso_lib_version"
+
+    def lottieVersion = "3.4.0"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 }
