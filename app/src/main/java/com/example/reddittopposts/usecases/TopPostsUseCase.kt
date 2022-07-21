@@ -28,7 +28,10 @@ class TopPostsUseCase @Inject constructor(
             thumbnailUrl = childData.thumbnail,
             publication_date = getDateTimeFormatted(childData.createdUTC?.toLong()),
             fullFileUrl = if (childData.isVideo == true) {
-                childData.media?.reddit_video?.scrubberMediaURL
+                childData.media?.reddit_video?.scrubberMediaURL?.replace(
+                    "?source=fallback",
+                    ""
+                )
             } else {
                 childData.url
             },
